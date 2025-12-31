@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxeMC - The Ultimate SMP Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        luxe: {
+                            gold: '#FFD700',
+                            dark: '#0a0a0a',
+                            accent: '#F59E0B',
+                            glass: 'rgba(255, 255, 255, 0.05)'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-luxe-dark text-white overflow-x-hidden selection:bg-luxe-gold selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md border-b border-white/10" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <i class="fa-solid fa-cube text-luxe-gold text-2xl"></i>
+                    <span class="font-bold text-2xl tracking-wider">LUXE<span class="text-luxe-gold">MC</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-luxe-gold transition-colors duration-300 px-3 py-2 rounded-md font-medium">Home</a>
+                        <a href="#features" class="hover:text-luxe-gold transition-colors duration-300 px-3 py-2 rounded-md font-medium">Features</a>
+                        <a href="#rules" class="hover:text-luxe-gold transition-colors duration-300 px-3 py-2 rounded-md font-medium">Rules</a>
+                        <a href="#staff" class="hover:text-luxe-gold transition-colors duration-300 px-3 py-2 rounded-md font-medium">Staff</a>
+                    </div>
+                </div>
+                <div>
+                    <a href="https://discord.gg/yourinvite" target="_blank" class="bg-[#5865F2] hover:bg-[#4752C4] text-white px-6 py-2 rounded-full font-bold transition-all duration-300 shadow-lg hover:shadow-[#5865F2]/50 flex items-center gap-2">
+                        <i class="fa-brands fa-discord"></i> Join Discord
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1607988795691-3d0147b43231?q=80&w=2070&auto=format&fit=crop" alt="Minecraft Landscape" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-b from-luxe-dark/80 via-luxe-dark/60 to-luxe-dark"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
+            <div class="inline-block px-4 py-1 rounded-full border border-luxe-gold/30 bg-luxe-gold/10 text-luxe-gold text-sm font-semibold mb-6 animate-fade-in-down">
+                VERSION 1.21.x • SURVIVAL MULTIPLAYER
+            </div>
+            <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight mb-6 animate-fade-in-up">
+                CRAFT YOUR <span class="text-transparent bg-clip-text bg-gradient-to-r from-luxe-gold to-amber-600">LEGACY</span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto animate-fade-in-up delay-100">
+                Experience the finest Minecraft SMP with custom economy, jobs, and a toxic-free community. Welcome to LuxeMC.
+            </p>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 animate-fade-in-up delay-200">
+                <!-- Copy IP Button -->
+                <div class="relative group">
+                    <button onclick="copyIP()" class="bg-white/10 backdrop-blur-md border border-white/20 hover:border-luxe-gold text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center gap-3 w-full md:w-auto hover:bg-white/20">
+                        <i class="fa-solid fa-gamepad text-luxe-gold"></i>
+                        <span id="ip-text">luxemc.falixsrv.me</span>
+                        <span class="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded ml-2 flex items-center gap-1">
+                            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                            <span id="player-count">Loading...</span>
+                        </span>
+                    </button>
+                    <div id="copy-tooltip" class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs py-1 px-2 rounded opacity-0 transition-opacity duration-300">
+                        Copied!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section (Bento Grid Style) -->
+    <section id="features" class="py-24 bg-luxe-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Server <span class="text-luxe-gold">Features</span></h2>
+                <div class="w-24 h-1 bg-luxe-gold mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="bg-luxe-glass border border-white/5 p-8 rounded-2xl hover:border-luxe-gold/50 transition-all duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 bg-amber-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-500/40 transition-colors">
+                        <i class="fa-solid fa-coins text-2xl text-luxe-gold"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Player Economy</h3>
+                    <p class="text-gray-400">A balanced, player-driven economy. Trade, sell, and build your empire from the ground up.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-luxe-glass border border-white/5 p-8 rounded-2xl hover:border-luxe-gold/50 transition-all duration-300 hover:-translate-y-2 group md:col-span-2 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-luxe-gold/5 rounded-full blur-3xl -mr-16 -mt-16"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-500/40 transition-colors">
+                            <i class="fa-solid fa-wand-magic-sparkles text-2xl text-purple-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Custom Enchants</h3>
+                        <p class="text-gray-400">Go beyond vanilla Minecraft. Discover over 50+ unique custom enchantments to power up your gear and dominate the wilderness.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-luxe-glass border border-white/5 p-8 rounded-2xl hover:border-luxe-gold/50 transition-all duration-300 hover:-translate-y-2 group md:col-span-2">
+                    <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-500/40 transition-colors">
+                        <i class="fa-solid fa-briefcase text-2xl text-blue-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Interactive Jobs</h3>
+                    <p class="text-gray-400">Join jobs like Miner, Woodcutter, or Hunter to earn money while you play. Level up your profession to unlock better rewards.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-luxe-glass border border-white/5 p-8 rounded-2xl hover:border-luxe-gold/50 transition-all duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-500/40 transition-colors">
+                        <i class="fa-solid fa-shield-halved text-2xl text-green-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Land Claiming</h3>
+                    <p class="text-gray-400">Protect your builds with our easy-to-use claiming system. Griefing is not an option here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Section -->
+    <section id="rules" class="py-24 bg-black/50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Server <span class="text-red-500">Rules</span></h2>
+                <p class="text-gray-400">Keep LuxeMC fun and fair for everyone.</p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-neutral-900 border-l-4 border-red-500 p-6 rounded-r-lg flex items-start gap-4">
+                    <i class="fa-solid fa-ban text-red-500 mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-lg">No Hacking or Cheating</h4>
+                        <p class="text-gray-400 text-sm">X-ray, Fly hacks, Kill aura, and auto-clickers are strictly prohibited.</p>
+                    </div>
+                </div>
+                <div class="bg-neutral-900 border-l-4 border-orange-500 p-6 rounded-r-lg flex items-start gap-4">
+                    <i class="fa-solid fa-house-crack text-orange-500 mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-lg">No Griefing</h4>
+                        <p class="text-gray-400 text-sm">Do not destroy other players' builds or steal items. Use claim blocks.</p>
+                    </div>
+                </div>
+                <div class="bg-neutral-900 border-l-4 border-yellow-500 p-6 rounded-r-lg flex items-start gap-4">
+                    <i class="fa-solid fa-comments text-yellow-500 mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-lg">No Toxicity</h4>
+                        <p class="text-gray-400 text-sm">Be respectful in chat. Racism, harassment, and hate speech result in an instant ban.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Section -->
+    <section id="staff" class="py-24 bg-luxe-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Meet the <span class="text-luxe-gold">Team</span></h2>
+            </div>
+
+            <div class="flex justify-center">
+                <!-- Founder Card -->
+                <div class="bg-luxe-glass border border-white/10 p-8 rounded-2xl text-center w-full max-w-sm hover:scale-105 transition-transform duration-300 relative group">
+                     <div class="absolute inset-0 bg-gradient-to-b from-luxe-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-luxe-gold overflow-hidden shadow-[0_0_20px_rgba(255,215,0,0.3)]">
+                        <!-- Using a generic steve/alex skin placeholder, in prod use actual skin API -->
+                        <img src="https://mc-heads.net/avatar/SenoxX/128" onerror="this.src='https://placehold.co/128x128/1a1a1a/FFF?text=S'" alt="SenoxX" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold">SenoxX</h3>
+                    <span class="bg-red-600/20 text-red-500 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mt-2 inline-block border border-red-600/30">Founder</span>
+                    <p class="text-gray-400 mt-4 text-sm">"Building the best community experience for everyone. Welcome to LuxeMC!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-500">&copy; 2023 LuxeMC. All rights reserved.</p>
+            <p class="text-gray-600 text-sm mt-2">Not affiliated with Mojang AB.</p>
+        </div>
+    </footer>
+
+    <!-- Mandatory Badge -->
+    <div class="fixed bottom-4 right-4 bg-white text-black font-bold px-4 py-2 rounded-lg shadow-2xl z-[9999] hover:scale-105 transition-transform duration-300 border border-gray-200 cursor-default">
+        Powered By Ansh's Gen
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
